@@ -11,7 +11,7 @@
     <h2>Answer These With Your Heart</h2>
     <p>Each answer will reveal a letter...</p>
 
-    <form action="https://formsubmit.co/ryanswagei50@gmail.com" method="POST">
+    <form id="valentine-form" action="https://formsubmit.co/ryanswagei50@gmail.com" method="POST">
       <input type="hidden" name="_captcha" value="false">
 
       <div id="questions-container">
@@ -32,13 +32,27 @@
 
       <div id="final-prompt" class="hidden">
         <h3>Will you be my valentine?</h3>
-        <button type="submit" name="Valentine Response" value="YES">Yes</button>
-        <button type="submit" name="Valentine Response" value="NO">No</button>
+        <button type="button" onclick="submitForm('YES')">Yes</button>
+        <button type="button" onclick="submitForm('NO')">No</button>
       </div>
     </form>
   </div>
+
+  <script>
+    function submitForm(response) {
+      const form = document.getElementById('valentine-form');
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = 'Valentine Response';
+      input.value = response;
+      form.appendChild(input);
+      form.submit();
+    }
+  </script>
+
   <script src="script.js"></script>
 </body>
 </html>
 
-
+    
+     
