@@ -1,0 +1,118 @@
+/* Global Styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  background-color: #fff;
+  color: #333;
+  overflow-x: hidden;
+}
+.container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1rem;
+  text-align: center;
+}
+button {
+  padding: 0.8em 1.5em;
+  font-size: 1em;
+  border: none;
+  border-radius: 5px;
+  background-color: #e63946;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin: 0.5em;
+}
+button:hover {
+  background-color: #d62839;
+}
+input[type="text"],
+input[type="password"] {
+  width: 80%;
+  padding: 0.8em;
+  margin: 0.5em 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1em;
+  transition: border-color 0.3s;
+}
+input[type="text"]:focus,
+input[type="password"]:focus {
+  border-color: #e63946;
+  outline: none;
+}
+.hidden {
+  display: none;
+}
+/* Fade In Animation */
+.fade-in {
+  animation: fadeIn 1s ease-in forwards;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+/* Login Container (Instagram-like) */
+.login-container {
+  background: #fafafa;
+  border: 1px solid #ddd;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+/* Floating Letter Animation */
+.floating-letter {
+  display: inline-block;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #e63946;
+  animation: floatLetter 1s ease-out forwards;
+  opacity: 0;
+}
+@keyframes floatLetter {
+  0% { transform: translateX(0); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateX(20px); opacity: 1; }
+}
+/* Heart Animation */
+.heart {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #e63946;
+  transform: rotate(45deg);
+  animation: fall 4s linear infinite;
+}
+.heart:before,
+.heart:after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #e63946;
+  border-radius: 50%;
+}
+.heart:before {
+  top: -10px;
+  left: 0;
+}
+.heart:after {
+  left: 10px;
+  top: 0;
+}
+@keyframes fall {
+  0% { top: -50px; opacity: 0; }
+  20% { opacity: 1; }
+  100% { top: 100vh; opacity: 0; }
+}
+/* Confetti canvas full screen (for yes.html) */
+#confetti-canvas {
+  position: fixed;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+}
