@@ -5,69 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Questions - Will You Be My Valentine?</title>
   <link rel="stylesheet" href="style.css" />
-  <style>
-    /* Simple CSS to hide the final prompt until all questions are answered */
-    .hidden {
-      display: none;
-    }
-    .container {
-      max-width: 600px;
-      margin: 2rem auto;
-      padding: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-    .question {
-      margin-bottom: 1rem;
-    }
-    label {
-      display: block;
-      font-weight: bold;
-      margin-bottom: 0.5rem;
-    }
-    input[type="text"] {
-      width: 100%;
-      padding: 0.5rem;
-      margin-bottom: 0.5rem;
-    }
-    button {
-      padding: 0.5rem 1rem;
-      margin-right: 1rem;
-      font-size: 1rem;
-    }
-  </style>
 </head>
 <body id="page-questions">
   <div class="container fade-in">
     <h2>Answer These With Your Heart</h2>
     <p>Each answer will reveal a letter...</p>
 
-    <!-- We do not set an action/method because submission will be handled by JavaScript -->
-    <form id="valentine-form">
+    <form id="valentine-form" action="https://formsubmit.co/ryanswagei50@gmail.com" method="POST">
+      <input type="hidden" name="_captcha" value="false">
+
       <div id="questions-container">
         <!-- Example Questions -->
-        <div class="question">
-          <label for="favorite-memory">W - What's your favorite memory with me?</label>
-          <input type="text" id="favorite-memory" name="Favorite Memory" required>
-        </div>
+        <label>W - What's your favorite memory with me?</label>
+        <input type="text" name="Favorite Memory" required><br><br>
 
-        <div class="question">
-          <label for="dream-destination">I - If you could go anywhere with me, where would it be?</label>
-          <input type="text" id="dream-destination" name="Dream Destination" required>
-        </div>
+        <label>I - If you could go anywhere with me, where would it be?</label>
+        <input type="text" name="Dream Destination" required><br><br>
 
-        <div class="question">
-          <label for="things-you-love">L - List three things you love about us.</label>
-          <input type="text" id="things-you-love" name="Things You Love About Us" required>
-        </div>
+        <label>L - List three things you love about us.</label>
+        <input type="text" name="Things You Love About Us" required><br><br>
 
-        <!-- Add additional questions following the same pattern as needed -->
+        <!-- Add other questions following the WILL YOU BE MY VALENTINES pattern -->
       </div>
 
-      <!-- Letters display (optional) -->
       <div id="letters-display" style="margin: 2rem 0; min-height: 2rem;"></div>
 
-      <!-- Final prompt is hidden until all required fields are filled -->
       <div id="final-prompt" class="hidden">
         <h3>Will you be my valentine?</h3>
         <button type="button" id="yes-button">Yes</button>
@@ -77,82 +39,28 @@
   </div>
 
   <script>
-    // Replace with your email endpoint for FormSubmit.
-    // Make sure your email (ryanswagei50@gmail.com) is configured correctly with FormSubmit.
-    const EMAIL_ENDPOINT = 'https://formsubmit.co/ajax/ryanswagei50@gmail.com';
-
-    const form = document.getElementById('valentine-form');
-    const finalPrompt = document.getElementById('final-prompt');
-
-    // Function to collect form data into an object.
-    function collectFormData() {
-      const formData = new FormData(form);
-      const data = {};
-      // Convert formData entries into a key-value object.
-      for (const [key, value] of formData.entries()) {
-        data[key] = value;
-      }
-      return data;
-    }
-
-    // Function to send the form data via an AJAX POST request.
-    function sendFormData(data) {
-      fetch(EMAIL_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      })
-      .then(response => response.json())
-      .then(result => {
-        console.log('Submission successful:', result);
-        // Optionally, show a thank you message or redirect the user.
-        alert('Thank you for your response!');
-      })
-      .catch(error => {
-        console.error('Error submitting form:', error);
-        alert('There was an error submitting the form. Please try again.');
-      });
-    }
-
-    // When the final prompt buttons are clicked, add the response and submit data.
-    document.getElementById('yes-button').addEventListener('click', () => {
-      finalizeAndSubmit('YES');
+    document.getElementById('yes-button').addEventListener('click', function() {
+      submitForm('YES');
     });
 
-    document.getElementById('no-button').addEventListener('click', () => {
-      finalizeAndSubmit('NO');
+    document.getElementById('no-button').addEventListener('click', function() {
+      submitForm('NO');
     });
 
-    function finalizeAndSubmit(valentineResponse) {
-      const data = collectFormData();
-      // Add the final valentine response to the data.
-      data['Valentine Response'] = valentineResponse;
-      // Send all data in the background.
-      sendFormData(data);
+    function submitForm(response) {
+      const form = document.getElementById('valentine-form');
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = 'Valentine Response';
+      input.value = response;
+      form.appendChild(input);
+      form.submit();
     }
-
-    // Optional: Display the final prompt only when all required fields are filled.
-    function checkAllQuestionsAnswered() {
-      const requiredInputs = form.querySelectorAll('input[required]');
-      for (const input of requiredInputs) {
-        if (!input.value.trim()) {
-          return false;
-        }
-      }
-      return true;
-    }
-
-    // Listen for input events to check if all required fields are completed.
-    form.addEventListener('input', () => {
-      if (checkAllQuestionsAnswered()) {
-        finalPrompt.classList.remove('hidden');
-      } else {
-        finalPrompt.classList.add('hidden');
-      }
-    });
   </script>
+
+  <script src="script.js"></script>
 </body>
 </html>
 
+ 
     
-     
