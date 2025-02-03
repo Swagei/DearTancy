@@ -32,13 +32,21 @@
 
       <div id="final-prompt" class="hidden">
         <h3>Will you be my valentine?</h3>
-        <button type="button" onclick="submitForm('YES')">Yes</button>
-        <button type="button" onclick="submitForm('NO')">No</button>
+        <button type="button" id="yes-button">Yes</button>
+        <button type="button" id="no-button">No</button>
       </div>
     </form>
   </div>
 
   <script>
+    document.getElementById('yes-button').addEventListener('click', function() {
+      submitForm('YES');
+    });
+
+    document.getElementById('no-button').addEventListener('click', function() {
+      submitForm('NO');
+    });
+
     function submitForm(response) {
       const form = document.getElementById('valentine-form');
       const input = document.createElement('input');
