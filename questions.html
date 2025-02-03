@@ -10,57 +10,15 @@
   <div class="container fade-in">
     <h2>Answer These With Your Heart</h2>
     <p>Each answer will reveal a letter...</p>
-
-    <form id="valentine-form" action="https://formsubmit.co/ryanswagei50@gmail.com" method="POST">
-      <input type="hidden" name="_captcha" value="false">
-
-      <div id="questions-container">
-        <!-- Example Questions -->
-        <label>W - What's your favorite memory with me?</label>
-        <input type="text" name="Favorite Memory" required><br><br>
-
-        <label>I - If you could go anywhere with me, where would it be?</label>
-        <input type="text" name="Dream Destination" required><br><br>
-
-        <label>L - List three things you love about us.</label>
-        <input type="text" name="Things You Love About Us" required><br><br>
-
-        <!-- Add other questions following the WILL YOU BE MY VALENTINES pattern -->
-      </div>
-
-      <div id="letters-display" style="margin: 2rem 0; min-height: 2rem;"></div>
-
-      <div id="final-prompt" class="hidden">
-        <h3>Will you be my valentine?</h3>
-        <button type="button" id="yes-button">Yes</button>
-        <button type="button" id="no-button">No</button>
-      </div>
-    </form>
+    <div id="questions-container"></div>
+    <div id="letters-display" style="margin: 2rem 0; min-height: 2rem;"></div>
+    <div id="final-prompt" class="hidden">
+      <h3>Will you be my valentine?</h3>
+      <button id="yes-button">Yes</button>
+      <button id="no-button">No</button>
+    </div>
   </div>
-
-  <script>
-    document.getElementById('yes-button').addEventListener('click', function() {
-      submitForm('YES');
-    });
-
-    document.getElementById('no-button').addEventListener('click', function() {
-      submitForm('NO');
-    });
-
-    function submitForm(response) {
-      const form = document.getElementById('valentine-form');
-      const input = document.createElement('input');
-      input.type = 'hidden';
-      input.name = 'Valentine Response';
-      input.value = response;
-      form.appendChild(input);
-      form.submit();
-    }
-  </script>
-
   <script src="script.js"></script>
 </body>
 </html>
 
- 
-    
